@@ -4,15 +4,24 @@ En este torneo de fútbol, los equipos compiten en una fase de clasificación: u
 
 ## Objetivos del Proyecto
 
-- Implementar un torneo de fútbol en el que los equipos compiten en una liga local y una eliminatoria internacional.
+- Implementar un torneo de fútbol en el que los equipos compiten en una liga local por país.
 
-- Utilizar el paralelismo con OpenMP y MPI para optimizar el cálculo de rendimientos y la gestión de partidos.
+- Utilizar el paralelismo con OpenMP y MPI para optimizar el cálculo de rendimientos y la gestión de partidos; donde cada slot o núcleo procesa el torneo de un país (8 por default, por con escalabilidad).
 
 - Clasificar a los dos mejores equipos de cada país (8 países) para la eliminatoria internacional.
 
 ## Objetivos del Proyecto
 
 El proyecto está diseñado para simular un torneo de fútbol con 8 países, cada uno con 20 equipos. Cada equipo tiene 25 jugadores, y el rendimiento de cada jugador se calcula de manera aleatoria antes de cada partido. La implementación utiliza OpenMP para calcular en paralelo el rendimiento de los jugadores y MPI para distribuir la simulación de cada país en nodos separados, permitiendo que las ligas locales se ejecuten en paralelo.
+
+
+## Consideraciones Técnicas
+
+Para los usuarios de WSL (Windows Subsystem for Linux), es necesario crear un archivo `hostfile` que contenga el número de nodos que se van a utilizar. Este archivo debe incluir la dirección `localhost` si se ejecuta en una sola máquina, o las direcciones IP de las máquinas involucradas en el caso de un entorno distribuido. Un ejemplo de contenido para `hostfile` podría ser:
+
+```bash
+localhost slots=8
+```
 
 ## Instalación de Dependencias (Debian OS)
 
